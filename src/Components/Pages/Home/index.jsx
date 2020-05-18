@@ -1,7 +1,9 @@
 import React from 'react';
-import {Layout} from 'antd';
+import {Layout, Menu} from 'antd';
 import './styles.css';
 import {Card} from "./Blocks/Card";
+import HomeOutlined from "@ant-design/icons/lib/icons/HomeOutlined";
+import ShoppingCartOutlined from "@ant-design/icons/lib/icons/ShoppingCartOutlined";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -31,7 +33,20 @@ export const Home = () => {
         <Layout>
             <Header>Header</Header>
             <Layout>
-                <Sider>Sider</Sider>
+                <Sider>
+                    <Menu
+                        defaultSelectedKeys={['1']}
+                        mode="inline"
+                        theme="dark"
+                    >
+                        <Menu.Item key="1" icon={<HomeOutlined />}>
+                            Home
+                        </Menu.Item>
+                        <Menu.Item key="2" icon={<ShoppingCartOutlined />}>
+                            Cart
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
                 <Content>
                     {
                         data.map(el => {
