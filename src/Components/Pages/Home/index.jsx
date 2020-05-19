@@ -1,11 +1,7 @@
 import React from 'react';
-import {Layout, Menu, Row} from 'antd';
-import './styles.css';
 import {Card} from "./Blocks/Card";
-import HomeOutlined from "@ant-design/icons/lib/icons/HomeOutlined";
-import ShoppingCartOutlined from "@ant-design/icons/lib/icons/ShoppingCartOutlined";
-
-const { Header, Footer, Sider, Content } = Layout;
+import {Layout} from "../UI/Layout";
+import {Row} from "antd";
 
 const data = [
     {
@@ -31,38 +27,18 @@ const data = [
 export const Home = () => {
     return (
         <Layout>
-            <Header>Header</Header>
-            <Layout>
-                <Sider>
-                    <Menu
-                        defaultSelectedKeys={['1']}
-                        mode="inline"
-                        theme="dark"
-                    >
-                        <Menu.Item key="1" icon={<HomeOutlined />}>
-                            Home
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<ShoppingCartOutlined />}>
-                            Cart
-                        </Menu.Item>
-                    </Menu>
-                </Sider>
-                <Content>
-                    <Row gutter={[16,16]}>
-                        {
-                            data.map(el => {
-                                return (
-                                    <Card
-                                        key={el.id}
-                                        item={el}
-                                    />
-                                )
-                            })
-                        }
-                     </Row>
-                </Content>
-            </Layout>
-            <Footer>Footer</Footer>
+            <Row gutter={[16, 16]}>
+                {
+                    data.map(el => {
+                        return (
+                            <Card
+                                key={el.id}
+                                item={el}
+                            />
+                        )
+                    })
+                }
+            </Row>
         </Layout>
     )
 }

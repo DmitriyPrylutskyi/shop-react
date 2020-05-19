@@ -1,10 +1,7 @@
 import React, {useState} from 'react';
-import {Layout, Menu, Row} from 'antd';
-import HomeOutlined from "@ant-design/icons/lib/icons/HomeOutlined";
-import ShoppingCartOutlined from "@ant-design/icons/lib/icons/ShoppingCartOutlined";
+import {Row} from 'antd';
 import {CardCart} from "./Blocks/Card";
-
-const { Header, Footer, Sider, Content } = Layout;
+import {Layout} from "../UI/Layout";
 
 const data = [
     {
@@ -60,44 +57,24 @@ export const Cart = () => {
 
     return (
         <Layout>
-            <Header>Header</Header>
-            <Layout>
-                <Sider>
-                    <Menu
-                        defaultSelectedKeys={['1']}
-                        mode="inline"
-                        theme="dark"
-                    >
-                        <Menu.Item key="1" icon={<HomeOutlined />}>
-                            Home
-                        </Menu.Item>
-                        <Menu.Item key="2" icon={<ShoppingCartOutlined />}>
-                            Cart
-                        </Menu.Item>
-                    </Menu>
-                </Sider>
-                <Content>
-                    <Row gutter={[16,16]}>
-                        {
-                            products.map(el => {
-                                return (
-                                    <CardCart
-                                        key={el.id}
-                                        item={el}
-                                        decreaseCount={decreaseCount}
-                                        increaseCount={increaseCount}
-                                        deleteProduct={deleteProduct}
-                                    />
-                                )
-                            })
-                        }
-                    </Row>
-                    <Row>
-                        <h2>Итого: {total} грн.</h2>
-                    </Row>
-                </Content>
-            </Layout>
-            <Footer>Интернет- магазин "Сувенир"</Footer>
+            <Row gutter={[16, 16]}>
+                {
+                    products.map(el => {
+                        return (
+                            <CardCart
+                                key={el.id}
+                                item={el}
+                                decreaseCount={decreaseCount}
+                                increaseCount={increaseCount}
+                                deleteProduct={deleteProduct}
+                            />
+                        )
+                    })
+                }
+            </Row>
+            <Row>
+                <h2>Итого: {total} грн.</h2>
+            </Row>
         </Layout>
     )
 }

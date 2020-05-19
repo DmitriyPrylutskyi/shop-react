@@ -1,0 +1,21 @@
+.ant-layout:first-child {
+    min-height: 100vh;
+}
+
+.ant-layout-header {
+    background-image: url('https://picsum.photos/1080/64?grayscale') !important;
+    background-size: cover !important;
+}
+
+.ant-layout-content {
+    padding: 10px;
+}
+
+.ant-layout-footer {
+    text-align: center;
+    background: #219ca9!important;
+}
+
+.ant-card-cover {
+    height: 300px;
+}
