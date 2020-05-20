@@ -34,28 +34,25 @@ export const Cart = () => {
     const [total, changeTotal] = useState(0);
     const [products, changeCount] = useState(data);
 
-    const decreaseCount = (id) => {
-        const el = products.find(item => item.id === id)
-        changeTotal(total - el.price)
-        changeCount(products.map(item => item.id === id
-            ? { ...item, count: item.count - 1 }
+    const changeProduct = (product, delta) => {
+        return products.map(item => item.id === product.id
+            ? { ...item, count: item.count + delta }
             : item)
-        )
     }
 
-    const increaseCount = (id) => {
-        const el = products.find(item => item.id === id)
-        changeTotal(total + el.price)
-        changeCount(products.map(item => item.id === id
-            ? { ...item, count: item.count + 1 }
-            : item)
-        )
+    const decreaseCount = (product) => {
+        changeTotal(total - product.price)
+        changeCount(changeProduct(product, -1))
     }
 
-    const deleteProduct = (id)=> {
-        const el = products.find(item => item.id === id)
-        changeCount(products.filter(item => item.id !== id))
-        changeTotal(total - (el.price * el.count))
+    const increaseCount = (product) => {
+        changeTotal(total + product.price)
+        changeCount(changeProduct(product, 1))
+    }
+
+    const deleteProduct = (product)=> {
+        changeCount(products.filter(item => item.id !== product.id))
+        changeTotal(total - (product.price * product.count))
     }
 
     return (
