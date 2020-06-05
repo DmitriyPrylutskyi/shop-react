@@ -19,3 +19,8 @@
 .ant-card-cover {
     height: 300px;
 }
+
+.add-cart {
+    display: block !important;
+    margin: 20px auto;
+}
