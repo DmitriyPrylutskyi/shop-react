@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {Card as AntdCard, Col} from 'antd';
+import {Button, Card as AntdCard, Col} from 'antd';
 import ReactCardFlip from "react-card-flip";
 import '../../UI/Layout/styles.css';
 
 const {Meta} = AntdCard;
 
-export const Card = ({item}) => {
+export const Card = ({item, onAddCart}) => {
     const [isFlipped, changeFlipped] = useState(false);
 
     const clickCard = () => {
@@ -30,6 +30,9 @@ export const Card = ({item}) => {
                     <Meta title={`${item.price} грн.`} />
                 </AntdCard>
             </ReactCardFlip>
+            <Button type="primary" className="add-cart" onClick={onAddCart}>
+                Add To Cart
+            </Button>
         </Col>
     )
 }

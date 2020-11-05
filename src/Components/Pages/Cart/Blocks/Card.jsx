@@ -6,7 +6,11 @@ import DeleteOutlined from "@ant-design/icons/lib/icons/DeleteOutlined";
 const {Meta} = AntdCard;
 
 export const CardCart = (props) => {
-    const {item, decreaseCount, increaseCount, deleteProduct} = props;
+    const {item, onDecreaseCount, onIncreaseCount, onDeleteProduct} = props;
+
+    console.log(item)
+
+    console.log(onIncreaseCount)
 
     return (
         <Col className="gutter-row" span={6}>
@@ -17,10 +21,10 @@ export const CardCart = (props) => {
                 <Meta title={item.name}/>
                 <p>Цена: {item.price} грн.</p>
                 <p>Количество:</p>
-                <Button disabled={item.count === 0 } onClick={()=>{decreaseCount(item)}}>-</Button>
-                <span>{item.count}</span>
-                <Button onClick={()=>{increaseCount(item)}}>+</Button>
-                <Button type="primary" danger className="delete" onClick={()=>{deleteProduct(item)}}>
+                <Button disabled={item.quantity === 1 } onClick={onDecreaseCount}>-</Button>
+                <span>{item.quantity}</span>
+                <Button onClick={onIncreaseCount}>+</Button>
+                <Button type="primary" danger className="delete" onClick={onDeleteProduct}>
                     <DeleteOutlined />
                 </Button>
             </AntdCard>
